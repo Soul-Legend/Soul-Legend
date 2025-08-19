@@ -1,4 +1,4 @@
-### Hi, I'm Pedro 👋
+### Hello there! I'm Pedro 👋
 
 <p align="left">
   I'm a Computer Science undergraduate at UFSC, focusing on secure systems development. I have hands-on experience in C++, Python, and Go, with a strong foundation in applied cryptography, mobile security, and blockchain-based identity. I am actively seeking challenging opportunities where I can apply and expand my skill set.
