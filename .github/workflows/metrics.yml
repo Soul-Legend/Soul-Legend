@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          # Informações básicas
           user: Soul-Legend
           token: ${{ secrets.METRICS_TOKEN }}
           filename: metrics.svg
