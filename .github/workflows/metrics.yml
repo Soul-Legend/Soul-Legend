@@ -1,0 +1,45 @@
+name: Metrics
+on:
+  schedule: [{cron: "0 */6 * * *"}]
+  workflow_dispatch:
+  push: {branches: ["main"]}
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          user: Soul-Legend
+          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.svg
+          config_timezone: America/Sao_Paulo
+
+          # Layout limpo com Atividade e Repositórios lado a lado
+          base: activity, repositories
+          base_indepth: no
+
+          # Plugins que estão funcionando
+          plugins: >
+            isocalendar,
+            languages,
+            habits,
+            lines,
+            traffic
+
+          # Configurações dos plugins
+          plugin_isocalendar_duration: half-year
+          plugin_languages: yes
+          plugin_languages_limit: 8
+          plugin_languages_colors: "github"
+          plugin_languages_threshold: 0%
+          plugin_languages_substitutions: |
+            C++: Cpp
+          plugin_habits: yes
+          plugin_habits_from: 200
+          plugin_habits_days: 14
+          plugin_habits_charts: yes
+          plugin_lines: yes
+          plugin_lines_sections: code, changes
