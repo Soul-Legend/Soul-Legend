@@ -1,12 +1,7 @@
-# .github/workflows/metrics.yml
-
 name: Metrics
 on:
-  # Roda a cada 6 horas
   schedule: [{cron: "0 */6 * * *"}]
-  # Permite rodar manualmente a partir da aba Actions
   workflow_dispatch:
-  # Roda também ao fazer push para o branch main
   push: {branches: ["main"]}
 
 jobs:
@@ -17,20 +12,14 @@ jobs:
     steps:
       - uses: lowlighter/metrics@latest
         with:
-          # Nome de usuário do GitHub
+          # Informações básicas
           user: Soul-Legend
-          
-          # Token de autorização
           token: ${{ secrets.METRICS_TOKEN }}
-
-          # Arquivo de saída
           filename: metrics.svg
-
-          # Configurações base
           base: header, activity, community, repositories, metadata
-          config_timezone: America/Sao_Paulo # Fuso horário do Brasil
+          config_timezone: America/Sao_Paulo
 
-          # Plugins que vamos usar
+          # Plugins a serem usados
           plugins: >
             isocalendar,
             languages,
@@ -39,33 +28,35 @@ jobs:
             lines,
             projects,
             traffic
-          
-          # Configurações do plugin de calendário
+
+          # --- CONFIGURAÇÕES DOS PLUGINS ---
+
+          # Calendário de contribuições
           plugin_isocalendar_duration: half-year
 
-          # Configurações do plugin de linguagens
-          plugin_languages:
-            limit: 8                                # Limita a 8 linguagens mais usadas
-            colors: "github"                        # Cores padrão do GitHub
-            threshold: 0%                           # Mostra mesmo linguagens com pouco uso
-            substitutions:                          # Renomeia para um visual mais limpo
-              C++: "Cpp"
+          # Linguagens mais usadas
+          plugin_languages: yes
+          plugin_languages_limit: 8
+          plugin_languages_colors: "github"
+          plugin_languages_threshold: 0%
+          plugin_languages_substitutions: |
+            C++: Cpp
 
-          # Configurações do plugin de hábitos
-          plugin_habits:
-            from: 200                               # Analisa os últimos 200 commits
-            days: 14                                # Analisa as últimas duas semanas
-            charts: yes                             # Mostra gráficos
-          
-          # Configurações do plugin de conquistas
-          plugin_achievements:
-            threshold: C                            # Nível de raridade das conquistas (C = Comum)
-            limit: 0                                # Mostra todas as conquistas obtidas
+          # Hábitos de codificação
+          plugin_habits: yes
+          plugin_habits_from: 200
+          plugin_habits_days: 14
+          plugin_habits_charts: yes
 
-          # Configurações do plugin de linhas de código
-          plugin_lines:
-            sections: code, changes                 # Mostra linhas de código e alterações
-          
-          # Configurações do plugin de projetos
-          plugin_projects:
-            limit: 3                                # Mostra os 3 projetos mais recentes
+          # Conquistas do GitHub
+          plugin_achievements: yes
+          plugin_achievements_threshold: C
+          plugin_achievements_limit: 0
+
+          # Linhas de código
+          plugin_lines: yes
+          plugin_lines_sections: code, changes
+
+          # Projetos recentes
+          plugin_projects: yes
+          plugin_projects_limit: 3
