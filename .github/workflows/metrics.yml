@@ -15,10 +15,13 @@ jobs:
           user: Soul-Legend
           token: ${{ secrets.METRICS_TOKEN }}
           filename: metrics.svg
-          base: header, activity, community, repositories, metadata
           config_timezone: America/Sao_Paulo
 
-          # Plugins a serem usados
+
+          base: activity, repositories
+          base_indepth: no
+
+
           plugins: >
             isocalendar,
             languages,
@@ -27,33 +30,16 @@ jobs:
             traffic
 
           # --- CONFIGURAÇÕES DOS PLUGINS ---
-
-          # Calendário de contribuições
           plugin_isocalendar_duration: half-year
-
-          # Linguagens mais usadas
           plugin_languages: yes
           plugin_languages_limit: 8
           plugin_languages_colors: "github"
           plugin_languages_threshold: 0%
           plugin_languages_substitutions: |
             C++: Cpp
-
-          # Hábitos de codificação
           plugin_habits: yes
           plugin_habits_from: 200
           plugin_habits_days: 14
           plugin_habits_charts: yes
-
-          # Conquistas do GitHub
-          plugin_achievements: yes
-          plugin_achievements_threshold: C
-          plugin_achievements_limit: 0
-
-          # Linhas de código
           plugin_lines: yes
           plugin_lines_sections: code, changes
-
-          # Projetos recentes
-          plugin_projects: yes
-          plugin_projects_limit: 3
