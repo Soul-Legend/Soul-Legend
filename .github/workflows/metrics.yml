@@ -1,0 +1,71 @@
+# .github/workflows/metrics.yml
+
+name: Metrics
+on:
+  # Roda a cada 6 horas
+  schedule: [{cron: "0 */6 * * *"}]
+  # Permite rodar manualmente a partir da aba Actions
+  workflow_dispatch:
+  # Roda também ao fazer push para o branch main
+  push: {branches: ["main"]}
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: lowlighter/metrics@latest
+        with:
+          # Nome de usuário do GitHub
+          user: Soul-Legend
+          
+          # Token de autorização
+          token: ${{ secrets.METRICS_TOKEN }}
+
+          # Arquivo de saída
+          filename: metrics.svg
+
+          # Configurações base
+          base: header, activity, community, repositories, metadata
+          config_timezone: America/Sao_Paulo # Fuso horário do Brasil
+
+          # Plugins que vamos usar
+          plugins: >
+            isocalendar,
+            languages,
+            habits,
+            achievements,
+            lines,
+            projects,
+            traffic
+          
+          # Configurações do plugin de calendário
+          plugin_isocalendar_duration: half-year
+
+          # Configurações do plugin de linguagens
+          plugin_languages:
+            limit: 8                                # Limita a 8 linguagens mais usadas
+            colors: "github"                        # Cores padrão do GitHub
+            threshold: 0%                           # Mostra mesmo linguagens com pouco uso
+            substitutions:                          # Renomeia para um visual mais limpo
+              C++: "Cpp"
+
+          # Configurações do plugin de hábitos
+          plugin_habits:
+            from: 200                               # Analisa os últimos 200 commits
+            days: 14                                # Analisa as últimas duas semanas
+            charts: yes                             # Mostra gráficos
+          
+          # Configurações do plugin de conquistas
+          plugin_achievements:
+            threshold: C                            # Nível de raridade das conquistas (C = Comum)
+            limit: 0                                # Mostra todas as conquistas obtidas
+
+          # Configurações do plugin de linhas de código
+          plugin_lines:
+            sections: code, changes                 # Mostra linhas de código e alterações
+          
+          # Configurações do plugin de projetos
+          plugin_projects:
+            limit: 3                                # Mostra os 3 projetos mais recentes
