@@ -60,17 +60,19 @@
 
 ---
 
-### 🌱 I'm Currently Exploring...
+###  I'm Currently Exploring...
 
--   Advanced Offensive Security techniques (Pentesting).
--   Distributed Systems Architecture and System Design.
--   Cloud Security (AWS/GCP) and DevSecOps practices.
+-   Verifiable credentials and Zero Knowledge proofs
 
 ---
 
-### 📫 Get in Touch
+### Contact Info
 
 <p align="left">
 <a href="https://www.linkedin.com/in/pedro-henrique-taglialenha-058491211/" target="_blank"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
 <a href="mailto:phtaglialenha@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"></a>
+</p>
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=100&section=footer"/>
 </p>
