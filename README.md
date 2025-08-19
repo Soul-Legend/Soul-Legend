@@ -5,7 +5,7 @@
 </p>
 
 <!-- The Metrics image will be automatically generated and updated here -->
-![Metrics](https://github.com/Soul-Legend/Soul-Legend/blob/main/metrics.svg)
+![Metrics](https://github.com/Soul-Legend/Soul-Legend/blob/main/metrics.svg?v=1)
 
 ---
 
