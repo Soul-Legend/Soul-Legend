@@ -23,9 +23,7 @@ jobs:
             isocalendar,
             languages,
             habits,
-            achievements,
             lines,
-            projects,
             traffic
 
           # --- CONFIGURAÇÕES DOS PLUGINS ---
