@@ -18,7 +18,7 @@ jobs:
           config_timezone: America/Sao_Paulo
 
           # Layout limpo com Atividade e Repositórios lado a lado
-          base: activity, repositories
+          base: repositories
           base_indepth: no
 
           # Plugins que estão funcionando
